@@ -1,15 +1,20 @@
 const ADD_CATEGORY = 'category/add'
+const SELECT_CATEGORY = 'category/select'
 
-const addCategory = payload => ({
+export const addCategory = payload => ({
     type : ADD_CATEGORY,
     payload: {
         ...payload,
         id: Math.random().toString(36),
     }
 })
-
+export const selectcategory = payload => ({
+    type : SELECT_CATEGORY,
+    payload
+})
 const initialState = {
-    data :[{id:1, name:'Defecto'}]
+    data :[{id:1, name:'Defecto'}],
+    selected : 1,
 }
 
 export default function reducer( state = initialState, action ){
@@ -19,6 +24,11 @@ export default function reducer( state = initialState, action ){
             return {
                 ...state,
                 data : [...state.data, action.payload]
+            }
+        case SELECT_CATEGORY:
+            return {
+                ...state,
+                selected : action.payload,
             }
         default : 
             return state

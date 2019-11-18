@@ -1,12 +1,16 @@
 import React, {Component} from 'react'
-import {reduxForm, Field } from 'redux-form'
+
 
 export default class CategoryList extends Component {
+    handleClick = id =>() => {
+        const {selectcategory} = this.props
+        selectcategory(id)
+    }
     render(){
-        const { categories } = this.props
+        const { categories,selectcategory } = this.props
         return(
             <ul>
-                {categories.map(x => <li key={x.id}> {x.name} </li>)}
+                {categories.map(x => <li onClick={this.handleClick(x.id)} key={x.id}> {x.name} </li>)}
             </ul>
         )
     }

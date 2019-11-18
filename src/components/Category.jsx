@@ -4,11 +4,11 @@ import CategoryList from './CategoryList'
 
 export default class Category extends Component {
     render(){
-        const {categories } = this.props
+        const {categories, addCategory,selectcategory } = this.props
         return (
             <div>                
-                <CategoryForm  />
-                <CategoryList categories={categories} />
+                <CategoryForm  onSubmit={addCategory}/>
+                <CategoryList selectcategory={selectcategory} categories={categories} />
             </div>
         )
     }
